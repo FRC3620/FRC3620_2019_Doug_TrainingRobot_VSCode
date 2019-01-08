@@ -9,11 +9,11 @@ import org.usfirst.frc3620.robot.Robot;
 /**
  *
  */
-public class ButtonACommand extends Command {
+public class DriveCommand extends Command {
 	Logger logger = EventLogging.getLogger(getClass(), Level.INFO);
 	
-    public ButtonACommand() {
-        // requires(Robot.laserCannonSubsystem);
+    public DriveCommand() {
+        requires(Robot.driveSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -25,6 +25,9 @@ public class ButtonACommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+        double vertical = Robot.oi.getRightVerticalJoystickSquared();
+    	double horizontal = Robot.oi.getLeftHorizontalJoystickSquared();
+    	Robot.driveSubsystem.arcadeDrive(-vertical, horizontal);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,13 +39,15 @@ public class ButtonACommand extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-    	EventLogging.commandMessage(logger);
+        EventLogging.commandMessage(logger);
+        Robot.driveSubsystem.stopDrive();
     }
 
     // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
+    // subsystems is scheduled to run or when cancelled by whileHeld
     @Override
     protected void interrupted() {
     	EventLogging.commandMessage(logger);
+        Robot.driveSubsystem.stopDrive();
     }
 }

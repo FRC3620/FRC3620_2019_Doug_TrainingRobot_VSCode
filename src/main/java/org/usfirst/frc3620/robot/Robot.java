@@ -33,7 +33,6 @@ public class Robot extends TimedRobot {
 
     // Subsystems here
     public static DriveSubsystem driveSubsystem;
-    public static LaserCannonSubsystem laserCannonSubsystem;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -49,7 +48,6 @@ public class Robot extends TimedRobot {
 
         // set up subsystems
         driveSubsystem = new DriveSubsystem();
-        laserCannonSubsystem = new LaserCannonSubsystem();
 
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
@@ -118,14 +116,15 @@ public class Robot extends TimedRobot {
         endPeriodic();
     }
     
+    @Override
 	public void testInit() {
 		// This makes sure that the autonomous stops running when
 		// test starts running.
 		if (autonomousCommand != null)
-			((Command) autonomousCommand).cancel();
+            ((Command) autonomousCommand).cancel();
+            
 		processRobotModeChange(RobotMode.TEST);
 	}
-
 
 	/**
 	 * This function is called periodically during test mode.
@@ -136,8 +135,6 @@ public class Robot extends TimedRobot {
 		//LiveWindow.run();
 		endPeriodic();
 	}
-	
-
     
 	/*
 	 * this routine gets called whenever we change modes
@@ -155,7 +152,6 @@ public class Robot extends TimedRobot {
 		// if any subsystems need to know about mode changes, let
 		// them know here.
 		// exampleSubsystem.processRobotModeChange(newMode);
-	//	lightSubsystem.modeChange(newMode, previousRobotMode);
 		
 	}
 
@@ -176,7 +172,6 @@ public class Robot extends TimedRobot {
 
 		// and log data!
 		updateDashboard();
-		
 	}
 	
 	void updateDashboard() {

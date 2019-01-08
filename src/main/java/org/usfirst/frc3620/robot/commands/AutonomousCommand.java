@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.slf4j.Logger;
 import org.usfirst.frc3620.logger.EventLogging;
 import org.usfirst.frc3620.logger.EventLogging.Level;
-import org.usfirst.frc3620.robot.Robot;
 
 /**
  *
@@ -40,7 +39,7 @@ public class AutonomousCommand extends Command {
     }
 
     // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
+    // subsystems is scheduled to run or when cancelled by whileHeld
     @Override
     protected void interrupted() {
     	EventLogging.commandMessage(logger);

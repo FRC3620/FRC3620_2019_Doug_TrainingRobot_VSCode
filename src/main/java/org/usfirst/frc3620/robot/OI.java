@@ -2,10 +2,8 @@ package org.usfirst.frc3620.robot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.*;
 import org.usfirst.frc3620.misc.XBoxConstants;
 import org.usfirst.frc3620.robot.commands.*;
-
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -39,25 +37,37 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 
-    public Joystick joystick0;
+    private Joystick driverJoystick;
 
-    public JoystickButton joystickButtonA;
-    
     public OI() {
-        joystick0 = new Joystick(0);
+        driverJoystick = new Joystick(0);
 
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
-        SmartDashboard.putData("ButtonACommand", new ButtonACommand());
-        
-        joystickButtonA = new JoystickButton(joystick0, XBoxConstants.BUTTON_A);
-        joystickButtonA.whileHeld(new ButtonACommand());
-
-        SmartDashboard.putData("ButtonACommand", new ButtonACommand());
     }
 
-    public Joystick getJoystick0() {
-        return joystick0;
+    public Joystick getDriverJoystick() {
+        return driverJoystick;
     }
+
+    public double computeSquareWithDeadband (double position, double deadband) {
+        if (Math.abs(position) < deadband) {
+            return 0;
+        }
+
+    	double rv = position * position;
+    	if(position < 0) {
+    		rv = -rv;
+    	}
+    	return rv;
+    }
+
+    public double getLeftHorizontalJoystickSquared() {
+    	return computeSquareWithDeadband(driverJoystick.getRawAxis(XBoxConstants.AXIS_LEFT_X), 0.2);
+    }
+
+    public double getRightVerticalJoystickSquared() {
+    	return computeSquareWithDeadband(driverJoystick.getRawAxis(XBoxConstants.AXIS_RIGHT_Y), 0.2);
+    }
+
 }
-
