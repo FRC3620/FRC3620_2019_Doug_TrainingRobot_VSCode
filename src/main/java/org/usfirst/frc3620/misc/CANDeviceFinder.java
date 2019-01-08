@@ -4,7 +4,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.*;
 
-import edu.wpi.first.wpilibj.can.CANJNI;
+import edu.wpi.first.hal.can.CANJNI;
 
 public class CANDeviceFinder {
     ArrayList<String> deviceList = new ArrayList<String>();
