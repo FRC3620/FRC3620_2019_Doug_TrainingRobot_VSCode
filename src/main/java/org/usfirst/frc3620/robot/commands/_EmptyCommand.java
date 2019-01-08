@@ -9,10 +9,10 @@ import org.usfirst.frc3620.robot.Robot;
 /**
  *
  */
-public class AutonomousCommand extends Command {
+public class _EmptyCommand extends Command {
 	Logger logger = EventLogging.getLogger(getClass(), Level.INFO);
 	
-    public AutonomousCommand() {
+    public _EmptyCommand() {
         // requires(Robot.laserCannonSubsystem);
     }
 
