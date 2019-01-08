@@ -100,8 +100,8 @@ public class DPad {
 	}
 
 	public void verticalCommand (Command command) {
-		right().whenActive(command);
-		left().cancelWhenActive(command);
+		up().whenActive(command);
+		down().cancelWhenActive(command);
 	}
 
 }
