@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -16,21 +17,30 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * floating around.
  */
 public class RobotMap {
-    public static Victor driveSubsystemLeftSpeedController;
-    public static Victor driveSubsystemRightSpeedController;
     public static DifferentialDrive driveSubsystemDifferentialDrive;
 
     @SuppressWarnings("deprecation")
 	public static void init() {
-        driveSubsystemLeftSpeedController = new Victor(0);
-        driveSubsystemLeftSpeedController.setName("DriveSubsystem", "Left");
-        driveSubsystemLeftSpeedController.setInverted(false);
+        Victor driveSubsystemLeftSpeedControllerA = new Victor(0);
+        driveSubsystemLeftSpeedControllerA.setName("DriveSubsystem", "LeftA");
+        driveSubsystemLeftSpeedControllerA.setInverted(false);
 
-        driveSubsystemRightSpeedController = new Victor(2);
-        driveSubsystemRightSpeedController.setName("DriveSubsystem", "Right");
-        driveSubsystemRightSpeedController.setInverted(false);
+        Victor driveSubsystemLeftSpeedControllerB = new Victor(1);
+        driveSubsystemLeftSpeedControllerB.setName("DriveSubsystem", "LeftB");
+        driveSubsystemLeftSpeedControllerB.setInverted(false);
 
-        driveSubsystemDifferentialDrive = new DifferentialDrive(driveSubsystemLeftSpeedController, driveSubsystemRightSpeedController);
+        Victor driveSubsystemRightSpeedControllerA = new Victor(2);
+        driveSubsystemRightSpeedControllerA.setName("DriveSubsystem", "RightA");
+        driveSubsystemRightSpeedControllerA.setInverted(false);
+
+        Victor driveSubsystemRightSpeedControllerB = new Victor(3);
+        driveSubsystemRightSpeedControllerB.setName("DriveSubsystem", "RightB");
+        driveSubsystemRightSpeedControllerB.setInverted(false);
+
+        SpeedControllerGroup groupLeft = new SpeedControllerGroup(driveSubsystemLeftSpeedControllerA, driveSubsystemLeftSpeedControllerB);
+        SpeedControllerGroup groupRight = new SpeedControllerGroup(driveSubsystemRightSpeedControllerA, driveSubsystemRightSpeedControllerB);
+
+        driveSubsystemDifferentialDrive = new DifferentialDrive(groupLeft, groupRight);
         driveSubsystemDifferentialDrive.setName("DriveSubsystem", "Drive");
         driveSubsystemDifferentialDrive.setSafetyEnabled(true);
         driveSubsystemDifferentialDrive.setExpiration(0.1);
