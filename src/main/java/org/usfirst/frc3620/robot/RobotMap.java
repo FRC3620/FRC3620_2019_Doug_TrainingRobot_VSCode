@@ -16,38 +16,25 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * floating around.
  */
 public class RobotMap {
-    public static SpeedController driveSubsystemLeftSpeedController;
-    public static SpeedController driveSubsystemRightSpeedController;
+    public static Victor driveSubsystemLeftSpeedController;
+    public static Victor driveSubsystemRightSpeedController;
     public static DifferentialDrive driveSubsystemDifferentialDrive;
-    public static AnalogInput laserCannonSubsystemAnalogInput0;
-    public static DigitalInput laserCannonSubsystemDigitalInput0;
-    public static SpeedController laserCannonSubsystemSpeedController2;
-    public static Servo laserCannonSubsystemServo9;
 
     @SuppressWarnings("deprecation")
 	public static void init() {
         driveSubsystemLeftSpeedController = new Victor(0);
-        LiveWindow.addActuator("DriveSubsystem", "Left Speed Controller", (Victor) driveSubsystemLeftSpeedController);
+        driveSubsystemLeftSpeedController.setName("DriveSubsystem", "Left");
         driveSubsystemLeftSpeedController.setInverted(false);
-        driveSubsystemRightSpeedController = new Victor(1);
-        LiveWindow.addActuator("DriveSubsystem", "Right Speed Controller", (Victor) driveSubsystemRightSpeedController);
+
+        driveSubsystemRightSpeedController = new Victor(2);
+        driveSubsystemRightSpeedController.setName("DriveSubsystem", "Right");
         driveSubsystemRightSpeedController.setInverted(false);
+
         driveSubsystemDifferentialDrive = new DifferentialDrive(driveSubsystemLeftSpeedController, driveSubsystemRightSpeedController);
-        LiveWindow.addActuator("DriveSubsystem", "Differential Drive", driveSubsystemDifferentialDrive);
+        driveSubsystemDifferentialDrive.setName("DriveSubsystem", "Drive");
         driveSubsystemDifferentialDrive.setSafetyEnabled(true);
         driveSubsystemDifferentialDrive.setExpiration(0.1);
         driveSubsystemDifferentialDrive.setMaxOutput(1.0);
 
-        laserCannonSubsystemAnalogInput0 = new AnalogInput(0);
-        LiveWindow.addSensor("LaserCannonSubsystem", "Analog Input 0", laserCannonSubsystemAnalogInput0);
-        
-        laserCannonSubsystemDigitalInput0 = new DigitalInput(0);
-        LiveWindow.addSensor("LaserCannonSubsystem", "Digital Input 0", laserCannonSubsystemDigitalInput0);
-        
-        laserCannonSubsystemSpeedController2 = new Victor(2);
-        LiveWindow.addActuator("LaserCannonSubsystem", "Speed Controller 2", (Victor) laserCannonSubsystemSpeedController2);
-        laserCannonSubsystemSpeedController2.setInverted(false);
-        laserCannonSubsystemServo9 = new Servo(9);
-        LiveWindow.addActuator("LaserCannonSubsystem", "Servo 9", laserCannonSubsystemServo9);
     }
 }
