@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class RobotMap {
     public static DifferentialDrive driveSubsystemDifferentialDrive;
-
+    public static Servo flipperServo;
     @SuppressWarnings("deprecation")
 	public static void init() {
         Victor driveSubsystemLeftSpeedControllerA = new Victor(0);
@@ -45,6 +45,10 @@ public class RobotMap {
         driveSubsystemDifferentialDrive.setSafetyEnabled(true);
         driveSubsystemDifferentialDrive.setExpiration(0.1);
         driveSubsystemDifferentialDrive.setMaxOutput(1.0);
+
+        flipperServo = new Servo(9);
+       
+
 
     }
 }
