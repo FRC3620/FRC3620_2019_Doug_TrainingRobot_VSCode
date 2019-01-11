@@ -2,6 +2,9 @@ package org.usfirst.frc3620.robot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 import org.usfirst.frc3620.misc.XBoxConstants;
 import org.usfirst.frc3620.robot.commands.*;
 
@@ -44,6 +47,8 @@ public class OI {
 
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
+        Button pushButton = new JoystickButton(driverJoystick, 1);
+        pushButton.whileHeld(new PushButtonCommand());
     }
 
     public Joystick getDriverJoystick() {
