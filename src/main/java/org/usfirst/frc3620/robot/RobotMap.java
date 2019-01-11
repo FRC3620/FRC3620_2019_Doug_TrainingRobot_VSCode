@@ -23,6 +23,7 @@ public class RobotMap {
     public static Solenoid buttonPresser2;
     
 
+    public static Servo flipperServo;
     @SuppressWarnings("deprecation")
 	public static void init() {
         Victor driveSubsystemLeftSpeedControllerA = new Victor(0);
@@ -54,6 +55,10 @@ public class RobotMap {
         
         buttonPresser1 = new Solenoid(7);
         buttonPresser2 = new Solenoid(6);
+
+        flipperServo = new Servo(9);
+       
+
 
     }
 }

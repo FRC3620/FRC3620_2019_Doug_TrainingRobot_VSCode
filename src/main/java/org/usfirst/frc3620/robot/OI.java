@@ -44,10 +44,14 @@ public class OI {
 
     public OI() {
         driverJoystick = new Joystick(0);
+        Button moveFingerUp = new JoystickButton(driverJoystick, XBoxConstants.BUTTON_A);
+        Button moveFingerDown = new JoystickButton(driverJoystick , XBoxConstants.BUTTON_B);
+        moveFingerUp.whenPressed(new MoveFingerUp());
+        moveFingerDown.whenPressed(new MoveFingerDown());
 
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
-        Button pushButton = new JoystickButton(driverJoystick, 1);
+        Button pushButton = new JoystickButton(driverJoystick, XBoxConstants.BUTTON_RIGHT_BUMPER);
         pushButton.whileHeld(new PushButtonCommand());
     }
 
