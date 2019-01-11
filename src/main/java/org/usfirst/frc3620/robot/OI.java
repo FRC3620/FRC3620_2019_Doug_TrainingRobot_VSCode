@@ -51,7 +51,7 @@ public class OI {
 
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
-        Button pushButton = new JoystickButton(driverJoystick, 1);
+        Button pushButton = new JoystickButton(driverJoystick, XBoxConstants.BUTTON_RIGHT_BUMPER);
         pushButton.whileHeld(new PushButtonCommand());
     }
 
