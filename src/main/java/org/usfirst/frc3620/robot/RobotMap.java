@@ -19,7 +19,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class RobotMap {
     public static DifferentialDrive driveSubsystemDifferentialDrive;
-    public static Solenoid buttonPresser;
+    public static Solenoid buttonPresser1;
+    public static Solenoid buttonPresser2;
+    
 
     @SuppressWarnings("deprecation")
 	public static void init() {
@@ -50,7 +52,8 @@ public class RobotMap {
         driveSubsystemDifferentialDrive.setMaxOutput(1.0);
         //new code
         
-        buttonPresser = new Solenoid(0);
+        buttonPresser1 = new Solenoid(7);
+        buttonPresser2 = new Solenoid(6);
 
     }
 }

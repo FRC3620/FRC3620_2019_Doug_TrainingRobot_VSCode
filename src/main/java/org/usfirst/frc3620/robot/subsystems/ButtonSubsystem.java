@@ -12,7 +12,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  *
  */
 public class ButtonSubsystem extends Subsystem {
-    private final Solenoid buttonPresser = RobotMap.buttonPresser;
+    private final Solenoid buttonPresser1 = RobotMap.buttonPresser1;
+    private final Solenoid buttonPresser2 = RobotMap.buttonPresser2;
 
 
     @Override
@@ -27,11 +28,13 @@ public class ButtonSubsystem extends Subsystem {
     }
 
     public void buttonPresserOut() {
-        buttonPresser.set(true);
+        buttonPresser1.set(true);
+        buttonPresser2.set(true);
     }
 
     public void buttonPresserIn() {
-        buttonPresser.set(false);
+        buttonPresser1.set(false);
+        buttonPresser2.set(false);
     }
 
 
