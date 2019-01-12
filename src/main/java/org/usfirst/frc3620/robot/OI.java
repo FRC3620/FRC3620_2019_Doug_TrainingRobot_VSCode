@@ -43,12 +43,12 @@ public class OI {
     private Joystick driverJoystick;
 
     public OI() {
+        //to interface with joysticks, no special initiallization nessessary
         driverJoystick = new Joystick(0);
         Button moveFingerUp = new JoystickButton(driverJoystick, XBoxConstants.BUTTON_A);
         Button moveFingerDown = new JoystickButton(driverJoystick , XBoxConstants.BUTTON_B);
         moveFingerUp.whenPressed(new MoveFingerUp());
         moveFingerDown.whenPressed(new MoveFingerDown());
-        
         
         Button flapInputUp = new JoystickButton(driverJoystick, XBoxConstants.BUTTON_X);
         Button flapInputDown = new JoystickButton(driverJoystick , XBoxConstants.BUTTON_Y);
@@ -79,11 +79,13 @@ public class OI {
     }
 
     public double getLeftHorizontalJoystickSquared() {
+        //gets value from x or y axis on joysticks on gamepad. In this istance, Left X
     	return computeSquareWithDeadband(driverJoystick.getRawAxis(XBoxConstants.AXIS_LEFT_X), 0.2);
     }
 
     public double getRightVerticalJoystickSquared() {
-    	return computeSquareWithDeadband(driverJoystick.getRawAxis(XBoxConstants.AXIS_RIGHT_Y), 0.2);
+        //gets value from x or y axis on joysticks on gamepad. In this istance, Right Y
+        return computeSquareWithDeadband(driverJoystick.getRawAxis(XBoxConstants.AXIS_RIGHT_Y), 0.2);
     }
 
 }

@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.slf4j.Logger;
 import org.usfirst.frc3620.logger.EventLogging;
 import org.usfirst.frc3620.logger.EventLogging.Level;
@@ -49,6 +48,7 @@ public class Robot extends TimedRobot {
         RobotMap.init();
 
         // set up subsystems
+        //initalized drive subsystem, which control motors to move robot
         driveSubsystem = new DriveSubsystem();
 		buttonSubstyem = new ButtonSubsystem();
         servoSubsystem = new ServoSubsystem();

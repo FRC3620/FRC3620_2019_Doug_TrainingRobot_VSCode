@@ -1,6 +1,5 @@
 package org.usfirst.frc3620.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
-
 import org.slf4j.Logger;
 import org.usfirst.frc3620.logger.EventLogging;
 import org.usfirst.frc3620.logger.EventLogging.Level;
@@ -25,8 +24,14 @@ public class DriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+        //gets values from Y-axis of Right stick on gamepad, X-axis goes unused
         double vertical = Robot.oi.getRightVerticalJoystickSquared();
-    	double horizontal = Robot.oi.getLeftHorizontalJoystickSquared();
+        //gets values from X-axis of Left stick on gamepad, Y-axis goes unused
+        double horizontal = Robot.oi.getLeftHorizontalJoystickSquared();
+        //displays current values on gamepad
+        //System.out.println("Vertical Right " + vertical + ": Horizontal Left" + horizontal);1
+
+        //Calls method to drive motors, declared in subsystem, sends real values to motors
     	Robot.driveSubsystem.arcadeDrive(-vertical, horizontal);
     }
 
@@ -40,6 +45,7 @@ public class DriveCommand extends Command {
     @Override
     protected void end() {
         EventLogging.commandMessage(logger);
+        //stops robot
         Robot.driveSubsystem.stopDrive();
     }
 
@@ -47,7 +53,8 @@ public class DriveCommand extends Command {
     // subsystems is scheduled to run or when cancelled by whileHeld
     @Override
     protected void interrupted() {
-    	EventLogging.commandMessage(logger);
+        EventLogging.commandMessage(logger);
+        //stops robot
         Robot.driveSubsystem.stopDrive();
     }
 }
