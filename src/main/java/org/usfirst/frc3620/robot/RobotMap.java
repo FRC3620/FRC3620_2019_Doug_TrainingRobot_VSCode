@@ -60,7 +60,7 @@ public class RobotMap {
 
         flipperServo = new Servo(9);
         
-        wingRelay = new Relay(8);
+        wingRelay = new Relay(1);
 
 
     }

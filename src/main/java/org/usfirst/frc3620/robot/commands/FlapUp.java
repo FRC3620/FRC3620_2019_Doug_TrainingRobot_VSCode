@@ -25,18 +25,20 @@ public class FlapUp extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.wingSubsystem.flapUp();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return false;
+        //Command only needs to run once, stops on first run
+        return true;
     }
 
     // Called once after isFinished returns true
     @Override
     protected void end() {
+        //method called in end to avoid multiple calls
+        Robot.wingSubsystem.flapUp();
     	EventLogging.commandMessage(logger);
     }
 
