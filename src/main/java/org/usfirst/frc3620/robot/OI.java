@@ -60,6 +60,9 @@ public class OI {
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         Button pushButton = new JoystickButton(driverJoystick, XBoxConstants.BUTTON_RIGHT_BUMPER);
         pushButton.whileHeld(new PushButtonCommand());
+        Button spinflagButton = new JoystickButton(driverJoystick, XBoxConstants.BUTTON_LEFT_BUMPER);
+        spinflagButton.toggleWhenPressed(new SpinFlagCommand());
+
     }
 
     public Joystick getDriverJoystick() {

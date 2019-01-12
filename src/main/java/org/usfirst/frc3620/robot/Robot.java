@@ -35,6 +35,7 @@ public class Robot extends TimedRobot {
 	public static ButtonSubsystem buttonSubstyem;
     public static ServoSubsystem servoSubsystem;
     public static WingSubsystem wingSubsystem;
+    public static FlagSpinnerSubsystem flagSpinnerSubsystem;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -53,6 +54,7 @@ public class Robot extends TimedRobot {
 		buttonSubstyem = new ButtonSubsystem();
         servoSubsystem = new ServoSubsystem();
         wingSubsystem = new WingSubsystem();
+        flagSpinnerSubsystem = new FlagSpinnerSubsystem();
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null

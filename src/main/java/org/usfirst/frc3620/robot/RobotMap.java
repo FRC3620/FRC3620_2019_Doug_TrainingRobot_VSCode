@@ -18,6 +18,7 @@ public class RobotMap {
     public static Solenoid buttonPresser1;
     public static Solenoid buttonPresser2;
     
+    public static Victor flagSpinner;
 
     public static Servo flipperServo;
     public static Relay wingRelay;
@@ -54,7 +55,9 @@ public class RobotMap {
         buttonPresser2 = new Solenoid(6);
 
         flipperServo = new Servo(9);
-        
         wingRelay = new Relay(1);
+        flagSpinner = new Victor(8);
+        flagSpinner.setName("FlagSpinner", "RightA");
+        flagSpinner.setInverted(false);
     }
 }
