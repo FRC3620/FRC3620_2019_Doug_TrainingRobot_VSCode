@@ -22,6 +22,7 @@ public class RobotMap {
     public static Solenoid buttonPresser1;
     public static Solenoid buttonPresser2;
     
+    public static Victor flagSpinner;
 
     public static Servo flipperServo;
     @SuppressWarnings("deprecation")
@@ -58,7 +59,9 @@ public class RobotMap {
 
         flipperServo = new Servo(9);
        
-
+        flagSpinner = new Victor(8);
+        flagSpinner.setName("FlagSpinner", "RightA");
+        flagSpinner.setInverted(false);
 
     }
 }
