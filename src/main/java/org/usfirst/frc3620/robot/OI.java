@@ -48,6 +48,13 @@ public class OI {
         Button moveFingerDown = new JoystickButton(driverJoystick , XBoxConstants.BUTTON_B);
         moveFingerUp.whenPressed(new MoveFingerUp());
         moveFingerDown.whenPressed(new MoveFingerDown());
+        
+        
+        Button flapInputUp = new JoystickButton(driverJoystick, XBoxConstants.BUTTON_X);
+        Button flapInputDown = new JoystickButton(driverJoystick , XBoxConstants.BUTTON_Y);
+        flapInputUp.whenPressed(new FlapUp());
+        flapInputDown.whenPressed(new FlapStop());
+
 
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());

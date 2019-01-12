@@ -2,6 +2,7 @@ package org.usfirst.frc3620.robot;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -24,6 +25,7 @@ public class RobotMap {
     
 
     public static Servo flipperServo;
+    public static Relay wingRelay;
     @SuppressWarnings("deprecation")
 	public static void init() {
         Victor driveSubsystemLeftSpeedControllerA = new Victor(0);
@@ -57,7 +59,8 @@ public class RobotMap {
         buttonPresser2 = new Solenoid(6);
 
         flipperServo = new Servo(9);
-       
+        
+        wingRelay = new Relay(8);
 
 
     }
