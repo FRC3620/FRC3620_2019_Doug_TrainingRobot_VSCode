@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.slf4j.Logger;
 import org.usfirst.frc3620.logger.EventLogging;
 import org.usfirst.frc3620.logger.EventLogging.Level;
@@ -33,10 +32,10 @@ public class Robot extends TimedRobot {
 
     // Subsystems here
     public static DriveSubsystem driveSubsystem;
-    public static ButtonSubsystem buttonSubstyem;
+	public static ButtonSubsystem buttonSubstyem;
     public static ServoSubsystem servoSubsystem;
+    public static WingSubsystem wingSubsystem;
     public static FlagSpinnerSubsystem flagSpinnerSubsystem;
-
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -50,11 +49,12 @@ public class Robot extends TimedRobot {
         RobotMap.init();
 
         // set up subsystems
+        //initalized drive subsystem, which control motors to move robot
         driveSubsystem = new DriveSubsystem();
 		buttonSubstyem = new ButtonSubsystem();
         servoSubsystem = new ServoSubsystem();
+        wingSubsystem = new WingSubsystem();
         flagSpinnerSubsystem = new FlagSpinnerSubsystem();
-        
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null

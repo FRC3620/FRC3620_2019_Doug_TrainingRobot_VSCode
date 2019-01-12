@@ -1,12 +1,10 @@
 package org.usfirst.frc3620.robot.subsystems;
 
 import org.usfirst.frc3620.robot.RobotMap;
-import org.usfirst.frc3620.robot.commands.DriveCommand;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
  *

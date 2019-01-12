@@ -16,7 +16,7 @@ public class DriveSubsystem extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
+        // Set the default command for a subsystem here. Drive command runs in background at all times
         setDefaultCommand(new DriveCommand());
     }
 
@@ -27,20 +27,21 @@ public class DriveSubsystem extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
     /**
      * drive the robot. positive Y is forward, positive X is to the right
      */
+
     public void arcadeDrive (double y, double x) {
+        //sends values to motor
+        //!!! Make sure robot is in open area, drive carefully
         differentialDrive.arcadeDrive(y, x);
     }
-
+    
     /**
      * shut down the robot.
      */
     public void stopDrive() {
+        //stops robot
         differentialDrive.stopMotor();
     }
-
-
 }
