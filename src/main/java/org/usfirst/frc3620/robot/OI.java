@@ -81,5 +81,7 @@ public class OI {
     public double getRightVerticalJoystickSquared() {
     	return computeSquareWithDeadband(driverJoystick.getRawAxis(XBoxConstants.AXIS_RIGHT_Y), 0.2);
     }
-
+    public double getRequestedFlagSpeed(){
+        return driverJoystick.getRawAxis(XBoxConstants.AXIS_LEFT_TRIGGER);
+    }
 }

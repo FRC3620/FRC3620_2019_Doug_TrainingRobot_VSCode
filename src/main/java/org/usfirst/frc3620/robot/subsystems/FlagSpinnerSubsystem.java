@@ -2,6 +2,7 @@ package org.usfirst.frc3620.robot.subsystems;
 
 import org.usfirst.frc3620.robot.RobotMap;
 import org.usfirst.frc3620.robot.commands.DriveCommand;
+import org.usfirst.frc3620.robot.commands.SpinFlagFromJoystickCommand;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -19,7 +20,7 @@ public class FlagSpinnerSubsystem extends Subsystem {
     @Override
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-     //   setDefaultCommand();
+        setDefaultCommand(new SpinFlagFromJoystickCommand());
     }
 
     @Override
