@@ -30,8 +30,11 @@ public class ServoSubsystem extends Subsystem {
         RobotMap.flipperServo.setAngle(0);
     }
     
-    // the angel can olny move down 170 (not 180)
-    public void moveFlipperFingerDown() {
-        RobotMap.flipperServo.setAngle(170);    
-    }
+    /** 
+     * the angel can olny move down 170 (not 180)
+    */
+     public void moveFlipperFingerDown() {
+    RobotMap.flipperServo.setAngle(170);    
+    
+}
 }

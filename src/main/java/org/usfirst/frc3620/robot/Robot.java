@@ -46,7 +46,9 @@ public class Robot extends TimedRobot {
         // set up hardware
         RobotMap.init();
 
-        // set up subsystems
+        /**
+         * sets up new subsystem: the drive subsystem
+         */
         driveSubsystem = new DriveSubsystem();
      
         // setup the servosubsystem 

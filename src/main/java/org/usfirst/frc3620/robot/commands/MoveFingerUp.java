@@ -11,7 +11,9 @@ import org.usfirst.frc3620.robot.Robot;
  */
 public class MoveFingerUp extends Command {
 	Logger logger = EventLogging.getLogger(getClass(), Level.INFO);
-	
+	/**
+     * it moves the finger up
+     */
     public  MoveFingerUp() {
         // requires(Robot.laserCannonSubsystem);
     }
@@ -25,7 +27,11 @@ public class MoveFingerUp extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-       Robot.servoSubsystem.moveFlipperFingerUp(); 
+       
+        /**
+         * tells subsystem to move flipper finger up
+        */
+         Robot.servoSubsystem.moveFlipperFingerUp(); 
     }
 
     // Make this return true when this Command no longer needs to run execute()

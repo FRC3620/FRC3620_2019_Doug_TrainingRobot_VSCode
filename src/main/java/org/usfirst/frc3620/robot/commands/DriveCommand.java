@@ -30,8 +30,10 @@ public class DriveCommand extends Command {
     	Robot.driveSubsystem.arcadeDrive(-vertical, horizontal);
     }
 
-    // Make this return true when this Command no longer needs to run execute()
-    @Override
+    /**
+     *  Make this return true when this Command no longer needs to run execute()
+    */
+     @Override
     protected boolean isFinished() {
         return false;
     }

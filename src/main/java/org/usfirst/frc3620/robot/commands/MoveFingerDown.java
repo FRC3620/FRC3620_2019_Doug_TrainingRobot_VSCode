@@ -25,7 +25,9 @@ public class MoveFingerDown extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-       Robot.servoSubsystem.moveFlipperFingerDown();
+      
+        // when command is executing called move finger subsysem to drive moter down
+        Robot.servoSubsystem.moveFlipperFingerDown();
     }
 
     // Make this return true when this Command no longer needs to run execute()
