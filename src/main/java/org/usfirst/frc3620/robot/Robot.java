@@ -48,6 +48,8 @@ public class Robot extends TimedRobot {
 
         // set up subsystems
         driveSubsystem = new DriveSubsystem();
+     
+        // setup the servosubsystem 
         servoSubsystem = new ServoSubsystem();
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be

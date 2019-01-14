@@ -19,11 +19,18 @@ public class ServoSubsystem extends Subsystem {
 
     @Override
     public void periodic() {
-        // Put code here to be run every loop
+    // Put code here to be run every loop
     }
+   
+
+    /**
+     * it tells to move the flipper finger up
+     */
     public void moveFlipperFingerUp() {
         RobotMap.flipperServo.setAngle(0);
     }
+    
+    // the angel can olny move down 170 (not 180)
     public void moveFlipperFingerDown() {
         RobotMap.flipperServo.setAngle(170);    
     }

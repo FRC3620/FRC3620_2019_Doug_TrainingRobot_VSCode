@@ -43,10 +43,19 @@ public class OI {
     private Joystick driverJoystick;
 
     public OI() {
+        // here we are initializing the joystick with index 0 (first xbox)
         driverJoystick = new Joystick(0);
+        
+        // when you press button A the finger moves 170 up
         Button moveFingerUp = new JoystickButton(driverJoystick, XBoxConstants.BUTTON_A);
+        
+        // when you press button B the finger moves to 0
         Button moveFingerDown = new JoystickButton(driverJoystick , XBoxConstants.BUTTON_B);
+       
+       // when you press A you move the new finger up
         moveFingerUp.whenPressed(new MoveFingerUp());
+      
+      // when you press A you move the new finger down
         moveFingerDown.whenPressed(new MoveFingerDown());
 
         // SmartDashboard Buttons

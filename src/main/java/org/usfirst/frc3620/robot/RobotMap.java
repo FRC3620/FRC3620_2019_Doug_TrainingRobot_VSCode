@@ -45,7 +45,9 @@ public class RobotMap {
         driveSubsystemDifferentialDrive.setSafetyEnabled(true);
         driveSubsystemDifferentialDrive.setExpiration(0.1);
         driveSubsystemDifferentialDrive.setMaxOutput(1.0);
-
+        /** 
+        *tells where the servo was pluged in
+       */
         flipperServo = new Servo(9);
        
 

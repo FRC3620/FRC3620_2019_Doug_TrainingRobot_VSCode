@@ -29,8 +29,13 @@ public class DriveSubsystem extends Subsystem {
     // here. Call these from Commands.
 
     /**
-     * drive the robot. positive Y is forward, positive X is to the right
-     */
+   * Arcade drive method for differential drive platform.
+   * The calculated values will be squared to decrease sensitivity at low speeds.
+   *
+   * @param y The robot's rotation rate around the Z axis [-1.0..1.0]. Clockwise is
+   *                  positive.
+   * @param x   The robot's speed along the X axis [-1.0..1.0]. Forward is positive.
+   */
     public void arcadeDrive (double y, double x) {
         differentialDrive.arcadeDrive(y, x);
     }
