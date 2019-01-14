@@ -1,5 +1,6 @@
 package org.usfirst.frc3620.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.slf4j.Logger;
 import org.usfirst.frc3620.logger.EventLogging;
 import org.usfirst.frc3620.logger.EventLogging.Level;
@@ -8,11 +9,11 @@ import org.usfirst.frc3620.robot.Robot;
 /**
  *
  */
-public class DriveCommand extends Command {
+public class FlapUp extends Command {
 	Logger logger = EventLogging.getLogger(getClass(), Level.INFO);
 	
-    public DriveCommand() {
-        requires(Robot.driveSubsystem);
+    public FlapUp() {
+        // requires(Robot.laserCannonSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -24,37 +25,27 @@ public class DriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        //gets values from Y-axis of Right stick on gamepad, X-axis goes unused
-        double vertical = Robot.oi.getRightVerticalJoystickSquared();
-        //gets values from X-axis of Left stick on gamepad, Y-axis goes unused
-        double horizontal = Robot.oi.getLeftHorizontalJoystickSquared();
-        //displays current values on gamepad
-        //System.out.println("Vertical Right " + vertical + ": Horizontal Left" + horizontal);1
-
-        //Calls method to drive motors, declared in subsystem, sends real values to motors
-    	Robot.driveSubsystem.arcadeDrive(-vertical, horizontal);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return false;
+        //Command only needs to run once, stops on first run
+        return true;
     }
 
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        EventLogging.commandMessage(logger);
-        //stops robot
-        Robot.driveSubsystem.stopDrive();
+        //method called in end to avoid multiple calls
+        Robot.wingSubsystem.flapUp();
+    	EventLogging.commandMessage(logger);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run or when cancelled by whileHeld
     @Override
     protected void interrupted() {
-        EventLogging.commandMessage(logger);
-        //stops robot
-        Robot.driveSubsystem.stopDrive();
+    	EventLogging.commandMessage(logger);
     }
 }

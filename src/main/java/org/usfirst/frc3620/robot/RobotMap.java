@@ -1,15 +1,11 @@
 package org.usfirst.frc3620.robot;
 
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -22,8 +18,10 @@ public class RobotMap {
     public static Solenoid buttonPresser1;
     public static Solenoid buttonPresser2;
     
+    public static Victor flagSpinner;
 
     public static Servo flipperServo;
+    public static Relay wingRelay;
     @SuppressWarnings("deprecation")
 	public static void init() {
         Victor driveSubsystemLeftSpeedControllerA = new Victor(0);
@@ -57,8 +55,9 @@ public class RobotMap {
         buttonPresser2 = new Solenoid(6);
 
         flipperServo = new Servo(9);
-       
-
-
+        wingRelay = new Relay(1);
+        flagSpinner = new Victor(8);
+        flagSpinner.setName("FlagSpinner", "RightA");
+        flagSpinner.setInverted(false);
     }
 }
