@@ -1,5 +1,7 @@
 package org.usfirst.frc3620.robot.subsystems;
 
+import java.awt.Robot;
+
 import org.usfirst.frc3620.robot.RobotMap;
 import org.usfirst.frc3620.robot.commands.DriveCommand;
 
@@ -11,9 +13,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 /**
  *
  */
-public class ButtonSubsystem extends Subsystem {
-    private final Solenoid buttonPresser = RobotMap.buttonPresser;
-
+public class SwitchSubsystem extends Subsystem {
+    
 
     @Override
     public void initDefaultCommand() {
@@ -25,12 +26,18 @@ public class ButtonSubsystem extends Subsystem {
     public void periodic() {
         // Put code here to be run every loop
     }
-
-    public void buttonPresserOut() {
-        buttonPresser.set(true);
+    //Flips Switch Up
+    public void MoveFlipperFingerUp() {
+        RobotMap.switchFlipper.setAngle(0);
+    }
+    //flips Switch Down
+    /*
+    
+    */
+    public void MoveFlipperFingerDown() {
+        RobotMap.switchFlipper.setAngle(170);
     }
 
-    public void buttonPresserIn() {
-        buttonPresser.set(false);
-    }
+
+
 }

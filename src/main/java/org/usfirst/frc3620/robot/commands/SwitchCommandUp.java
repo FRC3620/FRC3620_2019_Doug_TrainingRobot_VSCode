@@ -9,47 +9,42 @@ import org.usfirst.frc3620.robot.Robot;
 /**
  *
  */
-public class PushButtonCommand extends Command {
+public class SwitchCommandUp extends Command {
 	Logger logger = EventLogging.getLogger(getClass(), Level.INFO);
 	
-    public PushButtonCommand() {
+    public SwitchCommandUp() {
         // requires(Robot.laserCannonSubsystem);
     }
-
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        EventLogging.commandMessage(logger);
-        
+    	EventLogging.commandMessage(logger);
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.buttonSubstyem.buttonPresserOut();
+    
+        Robot.switchSubsystem.MoveFlipperFingerUp();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
         return false;
-
     }
 
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        EventLogging.commandMessage(logger);
-        Robot.buttonSubstyem.buttonPresserIn();
-
+    	EventLogging.commandMessage(logger);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run or when cancelled by whileHeld
     @Override
     protected void interrupted() {
-        EventLogging.commandMessage(logger);
-        Robot.buttonSubstyem.buttonPresserIn();
+    	EventLogging.commandMessage(logger);
     }
 }

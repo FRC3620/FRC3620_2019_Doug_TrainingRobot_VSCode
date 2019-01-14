@@ -20,6 +20,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class RobotMap {
     public static DifferentialDrive driveSubsystemDifferentialDrive;
     public static Solenoid buttonPresser;
+    public static Servo switchFlipper;
+    
 
     @SuppressWarnings("deprecation")
 	public static void init() {
@@ -51,6 +53,7 @@ public class RobotMap {
         //new code
         
         buttonPresser = new Solenoid(0);
+        switchFlipper = new Servo(9);
 
     }
 }

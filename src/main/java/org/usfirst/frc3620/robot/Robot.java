@@ -34,6 +34,8 @@ public class Robot extends TimedRobot {
     // Subsystems here
     public static DriveSubsystem driveSubsystem;
     public static ButtonSubsystem buttonSubstyem;
+    public static SwitchSubsystem switchSubsystem;
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -49,9 +51,10 @@ public class Robot extends TimedRobot {
         // set up subsystems
         driveSubsystem = new DriveSubsystem();
         buttonSubstyem = new ButtonSubsystem();
+        switchSubsystem = new SwitchSubsystem();
         
         // OI must be constructed after subsystems. If the OI creates Commands
-        //(which it very likely will), subsystems are not guaranteed to be
+        //(which it very likely will), subsy are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
         // pointers. Bad news. Don't move it.
         oi = new OI();
