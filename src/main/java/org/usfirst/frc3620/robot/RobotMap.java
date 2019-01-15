@@ -1,5 +1,8 @@
 package org.usfirst.frc3620.robot;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -17,31 +20,30 @@ public class RobotMap {
     public static DifferentialDrive driveSubsystemDifferentialDrive;
     public static Solenoid buttonPresser1;
     public static Solenoid buttonPresser2;
-    
     public static Victor flagSpinner;
-
     public static Servo flipperServo;
     public static Relay wingRelay;
+    public static CANSparkMax driveSubsystemMaxLeftA;
+    public static CANSparkMax driveSubsystemMaxLeftB;
+    public static CANSparkMax driveSubsystemMaxRightA;
+    public static CANSparkMax driveSubsystemMaxRightB;
+
     @SuppressWarnings("deprecation")
 	public static void init() {
-        Victor driveSubsystemLeftSpeedControllerA = new Victor(0);
-        driveSubsystemLeftSpeedControllerA.setName("DriveSubsystem", "LeftA");
-        driveSubsystemLeftSpeedControllerA.setInverted(false);
+        CANSparkMax driveSubsystemMaxLeftA = new CANSparkMax(X, MotorType.kBrushless);
+        driveSubsystemMaxLeftA.setInverted(false);
 
-        Victor driveSubsystemLeftSpeedControllerB = new Victor(1);
-        driveSubsystemLeftSpeedControllerB.setName("DriveSubsystem", "LeftB");
-        driveSubsystemLeftSpeedControllerB.setInverted(false);
+        CANSparkMax driveSubsystemMaxLeftB = new CANSparkMax(X, MotorType.kBrushless);
+        driveSubsystemMaxLeftB.setInverted(false);
 
-        Victor driveSubsystemRightSpeedControllerA = new Victor(2);
-        driveSubsystemRightSpeedControllerA.setName("DriveSubsystem", "RightA");
-        driveSubsystemRightSpeedControllerA.setInverted(false);
+        CANSparkMax driveSubsystemMaxRightA = new CANSparkMax(X, MotorType.kBrushless);
+        driveSubsystemMaxRightA.setInverted(false);
 
-        Victor driveSubsystemRightSpeedControllerB = new Victor(3);
-        driveSubsystemRightSpeedControllerB.setName("DriveSubsystem", "RightB");
-        driveSubsystemRightSpeedControllerB.setInverted(false);
+        CANSparkMax driveSubsystemMaxRightB = new CANSparkMax(X, MotorType.kBrushless);
+        driveSubsystemMaxRightB.setInverted(false);
 
-        SpeedControllerGroup groupLeft = new SpeedControllerGroup(driveSubsystemLeftSpeedControllerA, driveSubsystemLeftSpeedControllerB);
-        SpeedControllerGroup groupRight = new SpeedControllerGroup(driveSubsystemRightSpeedControllerA, driveSubsystemRightSpeedControllerB);
+        SpeedControllerGroup groupLeft = new SpeedControllerGroup(driveSubsystemMaxLeftA, driveSubsystemMaxLeftB);
+        SpeedControllerGroup groupRight = new SpeedControllerGroup(driveSubsystemMaxRightA, driveSubsystemMaxRightB);
 
        
         driveSubsystemDifferentialDrive = new DifferentialDrive(groupLeft, groupRight);
