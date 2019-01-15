@@ -1,5 +1,11 @@
 package org.usfirst.frc3620.robot;
 
+import org.slf4j.Logger;
+import org.usfirst.frc3620.logger.EventLogging;
+import org.usfirst.frc3620.logger.EventLogging.Level;
+import org.usfirst.frc3620.misc.CANDeviceFinder;
+
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -17,11 +23,14 @@ public class RobotMap {
     public static DifferentialDrive driveSubsystemDifferentialDrive;
     public static Solenoid buttonPresser1;
     public static Solenoid buttonPresser2;
-    
+    public static AnalogInput proximityAI;
     public static Victor flagSpinner;
 
     public static Servo flipperServo;
     public static Relay wingRelay;
+
+    static Logger logger = EventLogging.getLogger(RobotMap.class, Level.INFO);
+
     @SuppressWarnings("deprecation")
 	public static void init() {
         Victor driveSubsystemLeftSpeedControllerA = new Victor(0);
@@ -50,14 +59,24 @@ public class RobotMap {
         driveSubsystemDifferentialDrive.setExpiration(0.1);
         driveSubsystemDifferentialDrive.setMaxOutput(1.0);
         //new code
-        
-        buttonPresser1 = new Solenoid(7);
-        buttonPresser2 = new Solenoid(6);
 
+        CANDeviceFinder canDeviceFinder = new CANDeviceFinder();
+        logger.info ("CANDEVICEfinder found {}", canDeviceFinder.getDeviceList());
+
+
+        if (canDeviceFinder.isPCMPresent(0)) {
+            buttonPresser1 = new Solenoid(7);
+            buttonPresser2 = new Solenoid(6);
+        }
+        
         flipperServo = new Servo(9);
         wingRelay = new Relay(1);
         flagSpinner = new Victor(8);
         flagSpinner.setName("FlagSpinner", "RightA");
         flagSpinner.setInverted(false);
+        //we put the proximity sensor on channel 0
+        proximityAI = new AnalogInput(0);
     }
+
+
 }
