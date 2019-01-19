@@ -3,12 +3,14 @@ package org.usfirst.frc3620.robot;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -23,23 +25,30 @@ public class RobotMap {
     public static Victor flagSpinner;
     public static Servo flipperServo;
     public static Relay wingRelay;
-    public static CANSparkMax driveSubsystemMaxLeftA;
-    public static CANSparkMax driveSubsystemMaxLeftB;
-    public static CANSparkMax driveSubsystemMaxRightA;
-    public static CANSparkMax driveSubsystemMaxRightB;
+    public static Victor driveSubsystemMaxLeftA;
+    public static Victor driveSubsystemMaxLeftB;
+    public static Victor driveSubsystemMaxRightA;
+    public static Victor driveSubsystemMaxRightB;
+    public static Encoder driveLeftEncoder;
+    public static Encoder driveRightEncoder;
+
 
     @SuppressWarnings("deprecation")
 	public static void init() {
-        CANSparkMax driveSubsystemMaxLeftA = new CANSparkMax(X, MotorType.kBrushless);
+
+        driveLeftEncoder = new Encoder(6, 7, false, EncodingType.k4X);
+        driveRightEncoder = new Encoder(6, 7, false, EncodingType.k4X);
+
+        Victor driveSubsystemMaxLeftA = new Victor(0);
         driveSubsystemMaxLeftA.setInverted(false);
 
-        CANSparkMax driveSubsystemMaxLeftB = new CANSparkMax(X, MotorType.kBrushless);
+        Victor driveSubsystemMaxLeftB = new Victor(1);
         driveSubsystemMaxLeftB.setInverted(false);
 
-        CANSparkMax driveSubsystemMaxRightA = new CANSparkMax(X, MotorType.kBrushless);
+        Victor driveSubsystemMaxRightA = new Victor(2);
         driveSubsystemMaxRightA.setInverted(false);
 
-        CANSparkMax driveSubsystemMaxRightB = new CANSparkMax(X, MotorType.kBrushless);
+        Victor driveSubsystemMaxRightB = new Victor(3);
         driveSubsystemMaxRightB.setInverted(false);
 
         SpeedControllerGroup groupLeft = new SpeedControllerGroup(driveSubsystemMaxLeftA, driveSubsystemMaxLeftB);

@@ -4,6 +4,7 @@ import org.usfirst.frc3620.robot.RobotMap;
 import org.usfirst.frc3620.robot.commands.DriveCommand;
 
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -14,6 +15,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 public class FlagSpinnerSubsystem extends Subsystem {
     private final Solenoid buttonPresser1 = RobotMap.buttonPresser1;
     private final Solenoid buttonPresser2 = RobotMap.buttonPresser2;
+    private static Victor flagSpinner = RobotMap.flagSpinner;
 
 
     @Override
@@ -28,7 +30,7 @@ public class FlagSpinnerSubsystem extends Subsystem {
     }
 
     public void spinFlag(double flagspeed){
-        RobotMap.flagSpinner.set(flagspeed);
+        flagSpinner.set(flagspeed);
     
     }
     
