@@ -60,8 +60,8 @@ public class OI {
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         Button pushButton = new JoystickButton(driverJoystick, XBoxConstants.BUTTON_RIGHT_BUMPER);
         pushButton.whileHeld(new PushButtonCommand());
-        Button spinflagButton = new JoystickButton(driverJoystick, XBoxConstants.BUTTON_LEFT_BUMPER);
-        spinflagButton.toggleWhenPressed(new SpinFlagCommand());
+        Button spinflagButton = new JoystickButton(driverJoystick, XBoxConstants.AXIS_RIGHT_TRIGGER);
+        
 
     }
 
@@ -89,6 +89,11 @@ public class OI {
     public double getRightVerticalJoystickSquared() {
         //gets value from x or y axis on joysticks on gamepad. In this istance, Right Y
         return computeSquareWithDeadband(driverJoystick.getRawAxis(XBoxConstants.AXIS_RIGHT_Y), 0.2);
+    }
+
+    public double getRightTriggerJoystick() {
+        //gets value from right trigger axis
+        return driverJoystick.getRawAxis(XBoxConstants.AXIS_RIGHT_TRIGGER);
     }
 
 }
