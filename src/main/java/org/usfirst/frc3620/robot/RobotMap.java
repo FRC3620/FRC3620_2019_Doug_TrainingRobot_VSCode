@@ -8,10 +8,15 @@ import org.usfirst.frc3620.misc.CANDeviceFinder;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -19,12 +24,20 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
+
+ /**
+  * @author Nick Zimanski (SlippStream)
+  * @version 1/25/19
+  *
+  * Added light subsystem functionality, initialized to PWM 9
+  */
 public class RobotMap {
     public static DifferentialDrive driveSubsystemDifferentialDrive;
     public static Solenoid buttonPresser1;
     public static Solenoid buttonPresser2;
     public static AnalogInput proximityAI;
     public static Victor flagSpinner;
+    public static SpeedController lightSubsystemLightPWM;
 
     public static Servo flipperServo;
     public static Relay wingRelay;
@@ -52,6 +65,9 @@ public class RobotMap {
         SpeedControllerGroup groupLeft = new SpeedControllerGroup(driveSubsystemLeftSpeedControllerA, driveSubsystemLeftSpeedControllerB);
         SpeedControllerGroup groupRight = new SpeedControllerGroup(driveSubsystemRightSpeedControllerA, driveSubsystemRightSpeedControllerB);
 
+        lightSubsystemLightPWM = new Spark(5);
+		LiveWindow.addActuator("LightSubsystem", "LightPWM", (Spark) lightSubsystemLightPWM);
+		lightSubsystemLightPWM.setInverted(false);
        
         driveSubsystemDifferentialDrive = new DifferentialDrive(groupLeft, groupRight);
         driveSubsystemDifferentialDrive.setName("DriveSubsystem", "Drive");

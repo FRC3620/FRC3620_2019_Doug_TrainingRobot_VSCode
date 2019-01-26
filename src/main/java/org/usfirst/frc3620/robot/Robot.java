@@ -19,6 +19,13 @@ import org.usfirst.frc3620.robot.subsystems.*;
  * creating this project, you must also update the build.properties file in 
  * the project.
  */
+
+/**
+ * @author Nick Zimanski (SlippStream)
+ * @version 1/25/19
+ * 
+ * Added calls to lightsubsytem on mode change
+ */
 public class Robot extends TimedRobot {
 
     Command autonomousCommand;
@@ -34,6 +41,7 @@ public class Robot extends TimedRobot {
     public static DriveSubsystem driveSubsystem;
 	public static ButtonSubsystem buttonSubstyem;
     public static ServoSubsystem servoSubsystem;
+    public static LightSubsystem lightSubsystem;
     public static WingSubsystem wingSubsystem;
     public static FlagSpinnerSubsystem flagSpinnerSubsystem;
     /**
@@ -53,6 +61,7 @@ public class Robot extends TimedRobot {
         driveSubsystem = new DriveSubsystem();
 		buttonSubstyem = new ButtonSubsystem();
         servoSubsystem = new ServoSubsystem();
+        lightSubsystem = new LightSubsystem();
         wingSubsystem = new WingSubsystem();
         flagSpinnerSubsystem = new FlagSpinnerSubsystem();
         // OI must be constructed after subsystems. If the OI creates Commands
@@ -151,7 +160,8 @@ public class Robot extends TimedRobot {
 		if (currentRobotMode == RobotMode.INIT) {
 			// RobotMap.checkTheCANBus();
 		}
-		
+        
+        lightSubsystem.modeChange(newMode, currentRobotMode);
 		previousRobotMode = currentRobotMode;
 		currentRobotMode = newMode;
 

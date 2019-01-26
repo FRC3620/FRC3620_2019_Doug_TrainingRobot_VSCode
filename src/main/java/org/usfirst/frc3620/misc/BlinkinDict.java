@@ -1,6 +1,7 @@
 package org.usfirst.frc3620.misc;
 
 public class BlinkinDict {
+	//Team color 1 is always blue and color 2 is always red
 	public enum Color {
 		BLACK(0.99),
 		DARK_GRAY(0.97),
