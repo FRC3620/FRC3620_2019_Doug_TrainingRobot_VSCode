@@ -1,7 +1,7 @@
 package org.usfirst.frc3620.robot.subsystems;
 
 import org.usfirst.frc3620.robot.RobotMap;
-
+import org.usfirst.frc3620.robot.commands.MoveFingerFromJoystickCommand;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -14,7 +14,7 @@ public class ServoSubsystem extends Subsystem {
     @Override
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new DriveCommand());
+        setDefaultCommand(new MoveFingerFromJoystickCommand());
     }
 
     @Override
@@ -26,5 +26,10 @@ public class ServoSubsystem extends Subsystem {
     }
     public void moveFlipperFingerDown() {
         RobotMap.flipperServo.setAngle(170);    
+    }
+
+    public void moveFlipperFingerSomewhere(double where) {
+        double degrees = 90 + (where * 45);
+        RobotMap.flipperServo.setAngle(degrees);    
     }
 }

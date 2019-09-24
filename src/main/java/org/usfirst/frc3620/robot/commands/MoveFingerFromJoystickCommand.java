@@ -9,11 +9,11 @@ import org.usfirst.frc3620.robot.Robot;
 /**
  *
  */
-public class SpinFlagCommand extends Command {
+public class MoveFingerFromJoystickCommand extends Command {
 	Logger logger = EventLogging.getLogger(getClass(), Level.INFO);
 	
-    public SpinFlagCommand() {
-         requires(Robot.flagSpinnerSubsystem);
+    public MoveFingerFromJoystickCommand() {
+         requires(Robot.servoSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -25,13 +25,8 @@ public class SpinFlagCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        int seconds = (int) timeSinceInitialized();
-        if(seconds % 2 == 1) {
-            Robot.flagSpinnerSubsystem.spinFlag(0.5);
-        } else {
-            Robot.flagSpinnerSubsystem.spinFlag(-0.25);
-        }
-        
+        double joystickposition = Robot.oi.getRequestedServoPosition();
+        Robot.servoSubsystem.moveFlipperFingerSomewhere(joystickposition);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -44,7 +39,6 @@ public class SpinFlagCommand extends Command {
     @Override
     protected void end() {
         EventLogging.commandMessage(logger);
-        Robot.flagSpinnerSubsystem.spinFlag(0);
     }
 
     // Called when another command which requires one or more of the same
@@ -52,6 +46,5 @@ public class SpinFlagCommand extends Command {
     @Override
     protected void interrupted() {
         EventLogging.commandMessage(logger);
-        Robot.flagSpinnerSubsystem.spinFlag(0);
     }
 }
