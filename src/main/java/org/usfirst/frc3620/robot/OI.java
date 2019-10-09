@@ -93,4 +93,7 @@ public class OI {
     public double getRequestedFlagSpeed(){
         return driverJoystick.getRawAxis(XBoxConstants.AXIS_LEFT_TRIGGER);
     }
+    public double getRequestedFlagSpeedOpposite(){
+        return driverJoystick.getRawAxis(XBoxConstants.AXIS_RIGHT_TRIGGER);
+    }
 }
